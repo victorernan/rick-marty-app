@@ -2,11 +2,13 @@
 
     <div class="detail-char grid" *ngFor="let char of characters">
 
-        <div class="left">
+        <div class="titulo">
             <h2>{{char.name }}</h2>
-            <img [src]="char.image " [alt]="char.name">
         </div>
-        <div class="right">
+        <div class="imagen">
+            <img [src]="char.image" [alt]="char.name">
+        </div>
+        <div class="detalle">
             <p><strong>Status: </strong> {{char.status}}</p>
             <p><strong>Género: </strong> {{char.gender}}</p>
             <p><strong>Origen: </strong>Origin{{char.origin.name}}</p>
