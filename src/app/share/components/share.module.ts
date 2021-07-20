@@ -12,9 +12,6 @@ import { CardsBusquedaComponent } from './cards-busqueda/cards-busqueda.componen
     CommonModule,
     ShareRoutingModule
   ],
-  exports:[
-    CardsBusquedaComponent
-  ]
   
 })
 export class ShareModule { }
