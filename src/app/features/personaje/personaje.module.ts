@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 /*module components */
 import { PersonajeRoutingModule } from './personaje-routing.module';
 
+/*components */
 import { PersonajeListComponent } from './components/list/personaje-list.component';
 import { PersonajeDetalleComponent } from './components/detalle/personaje-detalle.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
