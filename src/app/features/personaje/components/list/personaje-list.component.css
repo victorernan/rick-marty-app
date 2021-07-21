@@ -15,9 +15,20 @@
 }
 
 .example-card {
-    margin: 0 10px;
+    margin: 3px 10px;
     border: 1px solid black;
     border: 1px solid;
     padding: 1px;
-    box-shadow: 2px 1px #888888;
+    box-shadow: 2px 1px #c7c7c7;
+}
+
+.example-card mat-card-content p {
+    height: 40px;
+    padding: 5%;
+    color: green;
+}
+
+.cuerpo {
+    align-items: center;
+    margin: 2rem 4rem;
 }

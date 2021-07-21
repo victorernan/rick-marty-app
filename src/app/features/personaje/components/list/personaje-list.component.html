@@ -1,21 +1,23 @@
-<div class="row">
+<div class="cuerpo">
+
     <div class="buscar">
         <button class="btn btn-secondary" routerLink="/buscar">Buscar Personaje</button>
     </div>
 
-    <div class="filtros col-lg-8 mt-4">
+    <div class="filtros">
         Filtrar por:
     </div>
-</div>
 
-<div class="grid">
-    <mat-card class="example-card mt-4" *ngFor="let character of personajes ">
-        <mat-card-header>
-            <h2>{{character.name}}</h2>
-        </mat-card-header>
-        <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
-        <mat-card-content>
-            <p>Estado: {{character.status}}; especie: {{character.species}} </p>
-        </mat-card-content>
-    </mat-card>
+    <div class="grid">
+        <mat-card class="example-card mt-4" *ngFor="let character of personajes ">
+            <mat-card-header>
+                <h2>{{character.name}}</h2>
+            </mat-card-header>
+            <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
+            <mat-card-content>
+                <p>Estado: {{character.status}}; especie: {{character.species}} </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
 </div>
