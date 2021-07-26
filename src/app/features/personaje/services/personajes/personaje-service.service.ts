@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { pluck, toArray } from 'rxjs/operators';
-import { Observable, pipe } from 'rxjs';
-import { map } from "rxjs/operators";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { pluck, tap, toArray, catchError } from 'rxjs/operators';
+import { Observable, pipe, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +29,18 @@ export class PersonajeServiceService {
 
   searchCharacters(nombre: string):Observable<IPersonaje>{
     const urlChar = `https://rickandmortyapi.com/api/character/?name=${nombre}`;
-    return this.httpservice.get<any>(urlChar).pipe(pluck('results'));
-  }
+    return this.httpservice.get<any>(urlChar).
+          pipe(
+            pluck('results'),
+            catchError(err => this.handleError(err))
+          );
+    }
+
+    handleError(error: HttpErrorResponse){
+      console.log(error);
+      console.warn("error ", error);
+      return throwError("Error victor");
+    }
 
 
 }
