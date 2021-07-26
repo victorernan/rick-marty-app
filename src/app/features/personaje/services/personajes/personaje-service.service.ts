@@ -32,4 +32,6 @@ export class PersonajeServiceService {
     const urlChar = `https://rickandmortyapi.com/api/character/?name=${nombre}`;
     return this.httpservice.get<any>(urlChar).pipe(pluck('results'));
   }
+
+
 }

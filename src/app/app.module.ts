@@ -12,7 +12,6 @@ import { CoreModule } from './core/components/core.module';
 import { ShareModule } from './share/components/share.module';
 
 /*material */
-import { MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -24,7 +23,6 @@ import { MatCardModule} from '@angular/material/card';
     AppRoutingModule, 
     HttpClientModule, 
     BrowserAnimationsModule,
-    MatCardModule,
     PersonajeModule,
     CoreModule,
     ShareModule

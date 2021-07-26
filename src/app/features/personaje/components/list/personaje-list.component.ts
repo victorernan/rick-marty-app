@@ -10,17 +10,24 @@ import { PersonajeServiceService } from '../../services/personajes/personaje-ser
 export class PersonajeListComponent implements OnInit {
 
   personajes : IPersonaje[];
+  gender : any;
+ 
+  IsChecked : boolean;
   constructor(private service : PersonajeServiceService) { }
   
   ngOnInit(): void {
     this.mostrarPersonajes();
   }
-  
+
   mostrarPersonajes(): void{
     this.service.getAllCharacters()
       .subscribe((resp)=>{
         this.personajes = resp;
-        console.log( this.personajes);
+        this.gender = [...new Set(this.personajes.map(item => item.gender))];
       });
-    }   
+  }
+
+  OnChange($event) {
+    console.log($event);
+  }
 }

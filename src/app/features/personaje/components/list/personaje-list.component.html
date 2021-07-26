@@ -5,7 +5,18 @@
     </div>
 
     <div class="filtros">
-        Filtrar por:
+        <mat-card>
+            <mat-card-content>
+                <label id="example-radio-group-label">Filtrar por género</label>
+                <mat-radio-group aria-labelledby="radio-group-label">
+                    <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="gender">
+                        {{genero}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </mat-card-content>
+        </mat-card>
+
+
     </div>
 
     <div class="grid">

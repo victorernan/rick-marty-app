@@ -9,6 +9,12 @@ import { PersonajeListComponent } from './components/list/personaje-list.compone
 import { PersonajeDetalleComponent } from './components/detalle/personaje-detalle.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-personaje.component';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule} from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 @NgModule({
   declarations: [
     PersonajeListComponent,
@@ -19,6 +25,10 @@ import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-p
   imports: [ 
     CommonModule,
     PersonajeRoutingModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatRadioModule
+    
   ]
 })
 export class PersonajeModule { }

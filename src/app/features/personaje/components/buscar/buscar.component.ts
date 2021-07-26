@@ -11,9 +11,12 @@ export class BuscarComponent  {
 
   personajes : IPersonaje[];
   char : string;
+
   constructor(
     private service : PersonajeServiceService,
     private location: Location) { }
+
+    
 
   buscar(char: string){
     this.service.searchCharacters(char)
@@ -26,4 +29,5 @@ export class BuscarComponent  {
   regresar() {
     this.location.back();
   }
+
 }
