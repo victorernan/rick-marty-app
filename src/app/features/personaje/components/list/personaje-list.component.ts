@@ -24,6 +24,8 @@ export class PersonajeListComponent implements OnInit {
       .subscribe((resp)=>{
         this.personajes = resp;
         this.gender = [...new Set(this.personajes.map(item => item.gender))];
+        console.log(this.personajes);
+        
       });
   }
 

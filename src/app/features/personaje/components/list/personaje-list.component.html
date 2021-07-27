@@ -26,7 +26,9 @@
             </mat-card-header>
             <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
             <mat-card-content>
-                <p>Estado: {{character.status}}; especie: {{character.species}} </p>
+                <p *ngIf="character.status.dead"><span class="badge badge-danger">Muerto</span> Especie: {{character.species}} </p>
+                <p *ngIf="character.status.alive"><span class="badge badge-success">Vivo</span> Especie: {{character.species}} </p>
+                <p *ngIf="character.status.unknown"><span class="badge badge-secondary">Desconocido</span> Especie: {{character.species}} </p>
             </mat-card-content>
         </mat-card>
     </div>
