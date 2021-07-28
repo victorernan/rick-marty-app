@@ -11,10 +11,9 @@ import { BuscarComponent } from './components/buscar/buscar.component';
 import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-personaje.component';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatCardModule} from '@angular/material/card';
-import {MatRadioModule} from '@angular/material/radio';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     PersonajeListComponent,
@@ -25,10 +24,10 @@ import {MatRadioModule} from '@angular/material/radio';
   imports: [ 
     CommonModule,
     PersonajeRoutingModule,
+    FormsModule,
     MatCheckboxModule,
     MatCardModule,
     MatRadioModule
-    
   ]
 })
 export class PersonajeModule { }
