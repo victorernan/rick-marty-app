@@ -35,4 +35,8 @@ export class PersonajeServiceService {
       console.warn("error ", error);
       return throwError("Error");
     }
+
+    filterByGender(gender:string):Observable<IPersonaje>{
+        return this.httpservice.get<any>(`${this.url}/character/?name=rick&gender=${gender}`).pipe(pluck('results'));
+    }
 }
