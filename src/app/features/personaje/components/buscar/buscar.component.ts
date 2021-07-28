@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 
@@ -13,7 +13,9 @@ export class BuscarComponent  {
   char : string;
   error_http : boolean;
   no_coincidencias = "no hay coincidencias para la búsqueda";
-  
+  gender_input : string;
+
+  @Input() gender : any[];
 
   constructor(
     private service : PersonajeServiceService,
@@ -30,6 +32,14 @@ export class BuscarComponent  {
       }, (err)=>{
         this.error_http = true;
       });
+  }
+
+  onGenreChange(value){
+    const gender_selected : string = value;
+    this.service.filterByGender(gender_selected).
+    subscribe((resp:any)=>{
+      console.log(resp);
+    });
   }
 
   regresar() {

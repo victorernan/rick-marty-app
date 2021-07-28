@@ -5,6 +5,7 @@
 }
 
 .volver,
+.filtros,
 .cuadroBusqueda,
 .alert {
     width: 90%;
@@ -27,7 +28,6 @@
 .example-card mat-card-content p {
     height: 40px;
     padding: 5%;
-    color: green;
 }
 
 input {
@@ -44,4 +44,13 @@ input {
 
 .grid img {
     width: 70%;
+}
+
+.cuerpo {
+    align-items: center;
+    margin: 2rem 4rem;
+}
+
+.example-radio-button {
+    display: inline;
 }

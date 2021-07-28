@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { PersonajeServiceService } from '../../services/personajes/personaje-ser
 export class PersonajeListComponent implements OnInit {
 
   personajes : IPersonaje[];
-  gender : any;
- 
-  IsChecked : boolean;
+  gender_input : any;
+  gender : any[];
+
   constructor(private service : PersonajeServiceService) { }
   
   ngOnInit(): void {
@@ -24,12 +24,7 @@ export class PersonajeListComponent implements OnInit {
       .subscribe((resp)=>{
         this.personajes = resp;
         this.gender = [...new Set(this.personajes.map(item => item.gender))];
-        console.log(this.personajes);
-        
+        //console.log(this.personajes);
       });
-  }
-
-  OnChange($event) {
-    console.log($event);
   }
 }
