@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 
@@ -11,11 +11,12 @@ export class BuscarComponent  {
 
   personajes : IPersonaje[];
   char : string;
-  error_http : boolean;
-  no_coincidencias = "no hay coincidencias para la búsqueda";
+  error_http : any;
+  no_coincidencias = "No hay coincidencias";
   gender_input : string;
 
   @Input() gender : any[];
+  @ViewChild('notFound') private notFound: ElementRef;
 
   constructor(
     private service : PersonajeServiceService,
@@ -31,6 +32,9 @@ export class BuscarComponent  {
         console.log(this.personajes);
       }, (err)=>{
         this.error_http = true;
+        this.error_http = setTimeout(()=>{
+          this.notFound.nativeElement.remove();
+        },2000);
       });
   }
 
