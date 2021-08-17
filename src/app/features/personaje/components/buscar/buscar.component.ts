@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input,  ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 
@@ -22,6 +22,7 @@ export class BuscarComponent  {
     private service : PersonajeServiceService,
     private location: Location) { }
 
+
   buscar(char: string){
     if(!char.trim()){
       this.personajes;
@@ -29,21 +30,12 @@ export class BuscarComponent  {
     this.service.searchCharacters(char)
       .subscribe((resp: any)=>{
         this.personajes = resp;
-        console.log(this.personajes);
       }, (err)=>{
         this.error_http = true;
         this.error_http = setTimeout(()=>{
           this.notFound.nativeElement.remove();
         },2000);
       });
-  }
-
-  onGenreChange(value){
-    const gender_selected : string = value;
-    this.service.filterByGender(gender_selected).
-    subscribe((resp:any)=>{
-      console.log(resp);
-    });
   }
 
   regresar() {

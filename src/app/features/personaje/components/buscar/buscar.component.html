@@ -3,18 +3,7 @@
         <input #char type="text" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
     </div>
 
-    <div class="filtros">
-        <mat-card>
-            <mat-card-content>
-                <label id="example-radio-group-label">Filtrar por género</label>
-                <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="gender_input">
-                    <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="genero" (change)="onGenreChange(genero)">
-                        {{genero}}
-                    </mat-radio-button>
-                </mat-radio-group>
-            </mat-card-content>
-        </mat-card>
-    </div>
+    <app-pintar [char]="char" [gender_input]="gender_input"></app-pintar>
 
     <div class="alert alert-danger" *ngIf="error_http" #notFound>
         <h1> {{no_coincidencias}} </h1>

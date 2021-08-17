@@ -1,6 +1,16 @@
 <div class="cuerpo">
-
     <app-buscar [gender]="gender"></app-buscar>
-
+    <div class="filtros">
+        <mat-card>
+            <mat-card-content>
+                <label id="example-radio-group-label">Filtrar por género</label>
+                <mat-radio-group aria-labelledby="radio-group-label" [(ngModel)]="gender_input">
+                    <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="genero" (change)="onGenreChange(genero)">
+                        {{genero}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </mat-card-content>
+        </mat-card>
+    </div>
     <app-pintar [personajes]="personajes"></app-pintar>
 </div>

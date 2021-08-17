@@ -5,13 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './pintar-personaje.component.html',
   styleUrls: ['./pintar-personaje.component.css']
 })
-export class PintarPersonajeComponent implements OnInit {
+export class PintarPersonajeComponent {
 
   constructor() { }
 
   @Input() personajes: IPersonaje[];
-
-  ngOnInit(): void {
-  }
+  @Input() char: string;
+  @Input() gender_input: string;
 
 }
