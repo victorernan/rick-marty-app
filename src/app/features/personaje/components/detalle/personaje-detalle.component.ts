@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-personaje-detalle',
@@ -10,31 +11,42 @@ import { ActivatedRoute } from "@angular/router";
 export class PersonajeDetalleComponent implements OnInit {
 
   characters : IPersonaje[];
+  epidose : any;
   id: any;
   episode : IEpisode[];
 
-  constructor(private service : PersonajeServiceService, private router : ActivatedRoute) { }
+  constructor(private location: Location, 
+              private service : PersonajeServiceService, 
+              private router : ActivatedRoute, 
+              public r : Router) { }
 
   ngOnInit(): void {
     this.getSingleChar();
     this.getEpisode();
+  
   }
 
   getSingleChar():void{
-    this.id = this.router.snapshot.paramMap.get('id');  //catch the id from url
+    this.id = this.router.snapshot.paramMap.get('id'); 
     this.service.getCharacter(this.id)
-      .subscribe((resp : any)=>{
+      .subscribe(((resp) =>{
+        if(!resp){
+          this.r.navigateByUrl('/personajes');
+          return;
+        }
         this.characters = [resp];
-         console.log("caracteres ",typeof(this.characters));
-      });
+      }));
   }
 
   getEpisode(): void{
     this.service.getEpisode(this.id)
-      .subscribe((resp)=>{
-        this.episode = [resp];
-        console.log("episodios: ",resp);
-        
+      .subscribe((resp: any)=>{
+        console.log("54s",resp);
+        this.epidose = resp
       });
-    }
+  }
+
+  regresar() {
+    this.location.back();
+  }
 }

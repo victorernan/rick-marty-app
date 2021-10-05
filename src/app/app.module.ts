@@ -11,12 +11,9 @@ import { PersonajeModule } from './features/personaje/personaje.module';
 import { CoreModule } from './core/components/core.module';
 import { ShareModule } from './share/components/share.module';
 
-/*material */
-
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

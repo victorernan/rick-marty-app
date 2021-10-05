@@ -1,45 +1,64 @@
 import { Component, Input,  ViewChild, ElementRef } from '@angular/core';
-import { Location } from '@angular/common';
+
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
+
+import { PersonajeListComponent } from './../list/personaje-list.component'
 
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
-  styleUrls: ['./buscar.component.css']
+  styleUrls: ['./buscar.component.css'],
+  providers : [PersonajeListComponent]
 })
 export class BuscarComponent  {
 
   personajes : IPersonaje[];
   char : string;
+  gender : any;
   error_http : any;
   no_coincidencias = "No hay coincidencias";
-  gender_input : string;
 
-  @Input() gender : any[];
+  @Input() genderSelected : string ;
   @ViewChild('notFound') private notFound: ElementRef;
 
   constructor(
     private service : PersonajeServiceService,
-    private location: Location) { }
+    private listComponent :  PersonajeListComponent)
+    { }
 
+  ngOnInit(): void {
+    this.mostrarPersonajes();
+  }
 
-  buscar(char: string){
-    if(!char.trim()){
-      this.personajes;
-    }
-    this.service.searchCharacters(char)
-      .subscribe((resp: any)=>{
+  public mostrarPersonajes(): void{
+    this.service.getAllCharacters()
+      .subscribe((resp)=>{
         this.personajes = resp;
-      }, (err)=>{
-        this.error_http = true;
-        this.error_http = setTimeout(()=>{
-          this.notFound.nativeElement.remove();
-        },2000);
+        this.gender = [...new Set(this.personajes.map(item => item.gender))];
       });
   }
 
-  regresar() {
-    this.location.back();
+  buscar(char: string){
+    char = char.toLowerCase();
+    if(!char){
+      return [];
+    }
+     if(char=="female" || char=="male" || char == "unknown" ){
+      this.service.searchCharacterByGender(char).subscribe((resp: any) =>{
+        this.personajes = resp;
+      });
+    }
+    else{
+      this.service.searchCharacters(char)
+       .subscribe((resp: any)=>{
+         this.personajes = resp;
+       }, (err)=>{
+        this.error_http = true;
+         this.error_http = setTimeout(()=>{
+            this.notFound.nativeElement.remove();
+          },5000);
+       });
+    }
   }
 
 }

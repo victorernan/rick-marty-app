@@ -9,17 +9,21 @@ import { PersonajeListComponent } from './components/list/personaje-list.compone
 import { PersonajeDetalleComponent } from './components/detalle/personaje-detalle.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-personaje.component';
+import { SlideshowPersonajesComponent } from './components/slideshow-personajes/slideshow-personajes.component'
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     PersonajeListComponent,
     PersonajeDetalleComponent,
     BuscarComponent,
     PintarPersonajeComponent,
+    SlideshowPersonajesComponent
   ],
   imports: [ 
     CommonModule,
@@ -27,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatCheckboxModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatPaginatorModule
   ]
 })
 export class PersonajeModule { }

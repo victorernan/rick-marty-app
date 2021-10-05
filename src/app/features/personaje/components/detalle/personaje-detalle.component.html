@@ -16,11 +16,22 @@
         </div>
     </div>
 
-    <h3 class="mt-4">Episodios en los que apareció</h3>
+    <h3 class="mt-4">Otros personajes</h3>
     <div class="episode">
-        <div *ngFor="let chap of episode">
-            <p>{{chap.name}}</p>
-            <p>{{chap.episode}}</p>
-        </div>
+        <app-pintar [episode]="episode"></app-pintar>
+        <!--
+            meter aqui un par de personajes que salen relacionados con el principal
+            <div *ngFor="let chap of episode">
+            <p>{{chap}}</p>
+        </div> -->
+
+    </div>
+
+    <button class="btn btn-outline-info" (click)="regresar()">Volver</button>
+
+
+    <div class="detail-char grid" *ngFor="let char of epidose">
+
+        <p>{{char}}</p>
     </div>
 </div>
