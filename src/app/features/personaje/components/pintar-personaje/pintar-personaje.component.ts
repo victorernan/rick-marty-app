@@ -10,12 +10,13 @@ export class PintarPersonajeComponent implements OnInit {
   constructor() { }
 
   @Input() personajes: IPersonaje[];
+  @Input() activarComponente;
   @Input() episode: IEpisode[];
 
-
   ngOnInit(): void {
-    // personajes es undefined y no puede desordenar el array
-    //this.personajes = this.personajes.sort(()=> Math.random() -0.5);
   }
+
+  
+ 
 
 }

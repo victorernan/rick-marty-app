@@ -1,46 +1,81 @@
+h2 {
+    text-align: center;
+}
+
 .personaje {
     width: 90%;
     margin: 2em auto;
 }
 
-.detail-char {
-    margin: 0.5rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 2;
-    gap: 3px;
-}
-
-.episode {
-    border: 1px solid rgb(131, 127, 127);
+.button-volver {
     text-align: center;
-    margin: 0.7em;
-    width: 30%;
-    padding: .5em;
+    margin-top: 1rem;
 }
 
-@media (min-width: 630px) {
-    .personaje {
-        width: 90%;
-        margin: 2em auto;
+.detail-char {
+    text-align: center;
+}
+
+@media (max-width: 550px) {
+    .imagen {
+        width: 100%;
+        text-align: center;
+        background-color: tomato;
+        padding: 1em .5em;
     }
+    img {
+        width: 95%;
+    }
+    .detalle,
+    .titulo {
+        margin: 1em;
+    }
+}
+
+@media (min-width: 551px) {
     .grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        display: grid;
+        grid-template-columns: 1.3fr 1.3fr;
         grid-template-rows: 2;
+        grid-template-areas: "titulo titulo", "imagen detalle";
     }
     .titulo {
-        grid-column: 1/4;
+        grid-area: titulo;
         grid-row: 1;
+        grid-column: 1 / span 2;
+    }
+    .detalle {
+        grid-area: detalle;
+        grid-column: 2/2;
+        grid-row: 2;
     }
     .imagen {
+        grid-area: imagen;
         grid-column: 1/2;
         grid-row: 2;
     }
-    .detalle {
+}
+
+@media (min-width: 850px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1.3fr 1.3fr 1.3fr;
+        grid-template-rows: 2;
+        grid-template-areas: "titulo titulo", "imagen detalle";
+    }
+    .titulo {
+        grid-area: titulo;
+        grid-row: 1;
+        grid-column: 1 / span 4;
+    }
+    .imagen {
+        grid-area: imagen;
         grid-column: 2/3;
+        grid-row: 2;
+    }
+    .detalle {
+        grid-area: detalle;
+        grid-column: 3/4;
         grid-row: 2;
     }
 }

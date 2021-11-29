@@ -1,7 +1,5 @@
 <div class="personaje">
-
     <div class="detail-char grid" *ngFor="let char of characters">
-
         <div class="titulo">
             <h2>{{char.name }}</h2>
         </div>
@@ -16,22 +14,18 @@
         </div>
     </div>
 
+    <div class="button-volver">
+        <button class="btn btn-outline-info" (click)="regresar()">Volver</button>
+    </div>
+    <!--
     <h3 class="mt-4">Otros personajes</h3>
     <div class="episode">
         <app-pintar [episode]="episode"></app-pintar>
-        <!--
+       
             meter aqui un par de personajes que salen relacionados con el principal
             <div *ngFor="let chap of episode">
             <p>{{chap}}</p>
-        </div> -->
-
+        </div> 
     </div>
-
-    <button class="btn btn-outline-info" (click)="regresar()">Volver</button>
-
-
-    <div class="detail-char grid" *ngFor="let char of epidose">
-
-        <p>{{char}}</p>
-    </div>
+    -->
 </div>

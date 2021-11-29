@@ -1,7 +1,6 @@
 import { Component, Input,  ViewChild, ElementRef } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
-
 import { PersonajeListComponent } from './../list/personaje-list.component'
 
 @Component({
@@ -12,47 +11,55 @@ import { PersonajeListComponent } from './../list/personaje-list.component'
 })
 export class BuscarComponent  {
 
-  personajes : IPersonaje[];
+  personajesBusqueda : IPersonaje[];
   char : string;
   gender : any;
   error_http : any;
-  no_coincidencias = "No hay coincidencias";
+  activarComponente : boolean;
 
   @Input() genderSelected : string ;
   @ViewChild('notFound') private notFound: ElementRef;
 
-  constructor(
-    private service : PersonajeServiceService,
-    private listComponent :  PersonajeListComponent)
-    { }
+  constructor(private service : PersonajeServiceService){ }
 
   ngOnInit(): void {
-    this.mostrarPersonajes();
+    this.botenesSelect();
   }
 
-  public mostrarPersonajes(): void{
+  group = new FormGroup({
+    name: new FormControl(),
+    gender: new FormControl(),
+  });
+
+  //funcion pensada para construir el select de manera dinamica
+  public botenesSelect(): void{
     this.service.getAllCharacters()
       .subscribe((resp)=>{
-        this.personajes = resp;
-        this.gender = [...new Set(this.personajes.map(item => item.gender))];
+        this.personajesBusqueda = resp;
+        this.gender = [...new Set(this.personajesBusqueda.map(item => item.gender))];
       });
   }
 
   buscar(char: string){
     char = char.toLowerCase();
+    if(char.length > 0){
+      this.activarComponente= true;
+    }
+    
     if(!char){
       return [];
     }
      if(char=="female" || char=="male" || char == "unknown" ){
       this.service.searchCharacterByGender(char).subscribe((resp: any) =>{
-        this.personajes = resp;
+        this.personajesBusqueda = resp;
       });
     }
     else{
       this.service.searchCharacters(char)
        .subscribe((resp: any)=>{
-         this.personajes = resp;
-       }, (err)=>{
+         this.personajesBusqueda = resp;
+       }
+       , (err)=>{
         this.error_http = true;
          this.error_http = setTimeout(()=>{
             this.notFound.nativeElement.remove();

@@ -1,12 +1,19 @@
 <div class="cuerpo">
     <app-buscar></app-buscar>
     <!-- <app-pintar [personajes]="personajes"></app-pintar> -->
+
+    <button type="button" class="btn btn-outline-success" (click)="getPage(characters['info'].prev)">Anterior
+    </button>
+    <button type="button" class="btn btn-outline-success" (click)="getPage(characters['info'].next)">Siguiente
+    </button>
 </div>
 
+
+
 <!-- ambos componentes están pintando todos los resultados. 
-De modo que si se tienen que imprimir 21, se están mostrando 42. 
+si se tienen que imprimir 21, se están mostrando 42. 
 app-buscar debería llevar un condicional de modo que cuando la 
-búsqueda se active, app-pintar se deje de mostrar datos. Y viceversa: 
-que app-pintar muestre los personajes si no está activando. Ahora misma 
+búsqueda se active, app-pintar se deje de mostrar datos. Y viceversa
+Ahora misma 
 ambas suscripciones están abiertas y por tanto, están arrojando datos.
 Parche temporal: no instanciar el componente pintar -->

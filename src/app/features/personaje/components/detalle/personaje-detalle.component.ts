@@ -13,6 +13,7 @@ export class PersonajeDetalleComponent implements OnInit {
   characters : IPersonaje[];
   epidose : any;
   id: any;
+  id_otros_personajes: [];
   episode : IEpisode[];
 
   constructor(private location: Location, 
@@ -41,8 +42,9 @@ export class PersonajeDetalleComponent implements OnInit {
   getEpisode(): void{
     this.service.getEpisode(this.id)
       .subscribe((resp: any)=>{
-        console.log("54s",resp);
-        this.epidose = resp
+        this.epidose = resp;
+        
+        console.log(this.epidose );
       });
   }
 

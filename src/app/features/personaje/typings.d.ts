@@ -29,3 +29,10 @@ interface IEpisode{
     url: string;
     created: Date;
 }
+
+interface  PagingInfo {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+}

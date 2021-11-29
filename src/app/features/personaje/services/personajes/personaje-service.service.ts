@@ -33,6 +33,7 @@ export class PersonajeServiceService {
     );
   }
 
+
   searchCharacters(nombre: string):Observable<IPersonaje>{
     return this.httpservice.get<any>(`${this.url}/character/?name=${nombre}`).
           pipe(
@@ -43,6 +44,10 @@ export class PersonajeServiceService {
     return this.httpservice.get<any>(`${this.url}/character/?gender=${gender}`).
           pipe(
             pluck('results'))
+  }
+
+  getCharPage(page: number):Observable<IPersonaje>{
+    return  this.httpservice.get<any>(`${this.url}/character/${page}`);
   }
 
 }

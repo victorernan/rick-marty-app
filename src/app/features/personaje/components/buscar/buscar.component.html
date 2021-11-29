@@ -1,24 +1,26 @@
 <div class="search">
-    <div class="filtros">
-        <mat-card>
-            <h3>Filtrar por género</h3>
-            <mat-card-content>
-                <mat-radio-group class="example-radio-group" aria-labelledby="radio-group-label">
-                    <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="genero" (click)="buscar(genero)">
-                        {{genero}}
-                    </mat-radio-button>
-                </mat-radio-group>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="cuadroBusqueda">
-        <input #char type="text" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
-    </div>
+    <form [formGroup]="group">
+        <div class="filtros">
+            <mat-card>
+                <h3>Filtrar por género</h3>
+                <mat-card-content>
+                    <mat-radio-group class="example-radio-group" aria-labelledby="radio-group-label" formControlName="gender">
+                        <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="genero" (click)="buscar(genero)">
+                            {{genero}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="cuadroBusqueda">
+            <input #char type="text" formControlName="name" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
+        </div>
+    </form>
 
-    <app-pintar [personajes]="personajes"></app-pintar>
+    <app-pintar [personajes]="personajesBusqueda" [activarComponente]="activarComponente"></app-pintar>
 
     <div class="alert alert-danger" *ngIf="error_http" #notFound>
-        <h1> {{no_coincidencias}} </h1>
+        <h1>No hay coincidencias exactas para la busqueda </h1>
     </div>
 
 </div>
