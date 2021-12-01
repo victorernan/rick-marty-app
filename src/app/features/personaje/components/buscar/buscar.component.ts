@@ -16,6 +16,7 @@ export class BuscarComponent  {
   gender : any;
   error_http : any;
   activarComponente : boolean;
+  items: any;
 
   @Input() genderSelected : string ;
   @ViewChild('notFound') private notFound: ElementRef;
@@ -31,25 +32,24 @@ export class BuscarComponent  {
     gender: new FormControl(),
   });
 
-  //funcion pensada para construir el select de manera dinamica
   public botenesSelect(): void{
     this.service.getAllCharacters()
       .subscribe((resp)=>{
-        this.personajesBusqueda = resp;
-        this.gender = [...new Set(this.personajesBusqueda.map(item => item.gender))];
+        this.items = resp;
+        this.gender = [...new Set(this.items.map(item => item.gender))];
       });
   }
 
   buscar(char: string){
     char = char.toLowerCase();
-    if(char.length > 0){
-      this.activarComponente= true;
-    }
+   
     
-    if(!char){
+    if(char.length < 0 || char == "" ){
+      console.log("entra");
       return [];
     }
-     if(char=="female" || char=="male" || char == "unknown" ){
+
+    if(char=="female" || char=="male" || char == "unknown" ){
       this.service.searchCharacterByGender(char).subscribe((resp: any) =>{
         this.personajesBusqueda = resp;
       });

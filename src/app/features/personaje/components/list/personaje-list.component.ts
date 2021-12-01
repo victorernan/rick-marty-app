@@ -33,7 +33,7 @@ export class PersonajeListComponent implements OnInit {
     });
   }
 
-  public onChangePage(next): void {
+  public cambiarPagina(next) {
     if (next) {
       this.currentPage++;
     } else {
@@ -42,7 +42,7 @@ export class PersonajeListComponent implements OnInit {
     this.service.getAllCharacters(this.currentPage).
       subscribe((res)=>{
         console.log(res);
-        this.personajes= res;
+       return this.personajes= res;
       })
   
   }

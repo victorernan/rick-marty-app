@@ -1,10 +1,8 @@
 <div class="cuerpo">
-    <app-buscar></app-buscar>
-    <!-- <app-pintar [personajes]="personajes"></app-pintar> -->
+    <app-pintar [personajes]="personajes"></app-pintar>
 </div>
 
 <div class="paginacion">
-    <!-- <mat-paginator [pageSize]="10" [length]="40"></mat-paginator> -->
     <ul class="pagination justify-content-center">
         <li class="page-item" [ngClass]="{'disabled': (currentPage === 1)}"><a class="page-link" (click)="cambiarPagina(false)"> Anterior</a></li>
         <li class="page-item"><a class="page-link">{{currentPage}}</a></li>
