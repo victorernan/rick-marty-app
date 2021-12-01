@@ -12,25 +12,40 @@ export class PersonajeListComponent implements OnInit {
   personajes : IPersonaje[];
   characters: any;
   urlApi: string;
-  
+  currentPage: number;
+  numPages: number;
 
-  constructor(private service : PersonajeServiceService) { }
+  constructor(private service : PersonajeServiceService) {
+    this.currentPage = 1;
+  }
   
   ngOnInit(): void {
     this.mostrarPersonajes();
-    //this.desordenar(this.personajes);
   }
 
   public mostrarPersonajes(): void{
     this.service.getAllCharacters()
-      .subscribe((resp)=>{
+     .subscribe(resp => {
         this.personajes = resp;
-        this.personajes = this.personajes.sort(()=> Math.random() -0.5);
+        this.numPages = resp['info']['pages'];
       },
       (error) =>{ console.error(error);
     });
   }
 
+  public onChangePage(next): void {
+    if (next) {
+      this.currentPage++;
+    } else {
+      this.currentPage--;
+    }
+    this.service.getAllCharacters(this.currentPage).
+      subscribe((res)=>{
+        console.log(res);
+        this.personajes= res;
+      })
+  
+  }
 
   
   getPage(urlApi) {

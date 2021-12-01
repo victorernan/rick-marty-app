@@ -8,3 +8,7 @@
     flex-direction: column;
     margin: 15px 0;
 }
+
+.paginacion {
+    margin: 2.5em auto;
+}

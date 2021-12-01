@@ -19,8 +19,8 @@ export class PersonajeServiceService {
 
   constructor(private httpservice: HttpClient) { }
 
-  getAllCharacters():Observable<IPersonaje[]> {
-    return this.httpservice.get<any>(`${this.url}/character`).pipe(pluck('results'));
+  getAllCharacters(page = 1):Observable<IPersonaje[]> {
+    return this.httpservice.get<any>(`${this.url}/character/?page=${page}`).pipe(pluck('results'));
   }
 
   getCharacter(char: string):Observable<IPersonaje>{
@@ -32,7 +32,6 @@ export class PersonajeServiceService {
       map((data) => data['characters'])
     );
   }
-
 
   searchCharacters(nombre: string):Observable<IPersonaje>{
     return this.httpservice.get<any>(`${this.url}/character/?name=${nombre}`).

@@ -3,10 +3,11 @@
     <!-- <app-pintar [personajes]="personajes"></app-pintar> -->
 </div>
 
-<!-- ambos componentes están pintando todos los resultados. 
-si se tienen que imprimir 21, se están mostrando 42. 
-app-buscar debería llevar un condicional de modo que cuando la 
-búsqueda se active, app-pintar se deje de mostrar datos. Y viceversa
-Ahora misma 
-ambas suscripciones están abiertas y por tanto, están arrojando datos.
-Parche temporal: no instanciar el componente pintar -->
+<div class="paginacion">
+    <!-- <mat-paginator [pageSize]="10" [length]="40"></mat-paginator> -->
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': (currentPage === 1)}"><a class="page-link" (click)="cambiarPagina(false)"> Anterior</a></li>
+        <li class="page-item"><a class="page-link">{{currentPage}}</a></li>
+        <li class="page-item" [ngClass]="{'disabled': (currentPage === numPages)}"><a class="page-link" (click)="cambiarPagina(true)">Siguiente</a></li>
+    </ul>
+</div>
