@@ -1,20 +1,26 @@
-<div class="col cuadroBusqueda">
-    <input #char type="text" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
-</div>
+<div class="search">
+    <form [formGroup]="group">
+        <div class="filtros">
+            <mat-card>
+                <h3>Filtrar por género</h3>
+                <mat-card-content>
+                    <mat-radio-group class="example-radio-group" aria-labelledby="radio-group-label" formControlName="gender">
+                        <mat-radio-button class="example-radio-button" *ngFor="let genero of gender" [value]="genero" (click)="buscar(genero)">
+                            {{genero}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="cuadroBusqueda">
+            <input #char type="text" formControlName="name" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
+        </div>
+    </form>
 
-<div class="col">
-    <!-- <app-cards-busqueda [resultado]="personajes"></app-cards-busqueda> -->
-    <mat-card class="example-card mt-4" *ngFor="let character of personajes ">
-        <mat-card-header>
-            <h2>{{character.name}}</h2>
-        </mat-card-header>
-        <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
-        <mat-card-content>
-            <p>Estado: {{character.status}}; especie: {{character.species}} </p>
-        </mat-card-content>
-    </mat-card>
+    <app-pintar [personajes]="personajesBusqueda" [activarComponente]="activarComponente"></app-pintar>
 
-</div>
-<div class="col volver">
-    <button type="button" class="btn btn-info" (click)="regresar()">Volver</button>
+    <div class="alert alert-danger" *ngIf="error_http" #notFound>
+        <h1>No hay coincidencias exactas para la busqueda </h1>
+    </div>
+
 </div>

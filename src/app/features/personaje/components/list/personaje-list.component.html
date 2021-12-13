@@ -1,21 +1,11 @@
-<div class="row">
-    <div class="buscar">
-        <button class="btn btn-secondary" routerLink="/buscar">Buscar Personaje</button>
-    </div>
-
-    <div class="filtros col-lg-8 mt-4">
-        Filtrar por:
-    </div>
+<div class="cuerpo">
+    <app-pintar [personajes]="personajes"></app-pintar>
 </div>
 
-<div class="grid">
-    <mat-card class="example-card mt-4" *ngFor="let character of personajes ">
-        <mat-card-header>
-            <h2>{{character.name}}</h2>
-        </mat-card-header>
-        <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
-        <mat-card-content>
-            <p>Estado: {{character.status}}; especie: {{character.species}} </p>
-        </mat-card-content>
-    </mat-card>
+<div class="paginacion">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': (currentPage === 1)}"><a class="page-link" (click)="cambiarPagina(false)"> Anterior</a></li>
+        <li class="page-item"><a class="page-link">{{currentPage}}</a></li>
+        <li class="page-item" [ngClass]="{'disabled': (currentPage === numPages)}"><a class="page-link" (click)="cambiarPagina(true)">Siguiente</a></li>
+    </ul>
 </div>

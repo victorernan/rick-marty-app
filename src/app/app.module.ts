@@ -9,25 +9,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*modules */
 import { PersonajeModule } from './features/personaje/personaje.module';
 import { CoreModule } from './core/components/core.module';
-// import { ShareModule } from './share/components/share.module';
-
-/*material */
-import { MatCardModule} from '@angular/material/card';
-
+import { ShareModule } from './share/components/share.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, 
     BrowserAnimationsModule,
-    MatCardModule,
     PersonajeModule,
     CoreModule,
-    // ShareModule
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

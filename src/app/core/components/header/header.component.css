@@ -1,4 +1,9 @@
-.nombrePagina {
+h2 {
+    margin: 2em;
+    text-align: center;
+}
+
+.header {
     background-color: gray;
-    padding: 2rem;
+    padding: .2em;
 }

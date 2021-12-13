@@ -1,29 +1,71 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, Input,  ViewChild, ElementRef } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
+import { PersonajeListComponent } from './../list/personaje-list.component'
 
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
-  styleUrls: ['./buscar.component.css']
+  styleUrls: ['./buscar.component.css'],
+  providers : [PersonajeListComponent]
 })
 export class BuscarComponent  {
 
-  personajes : IPersonaje[];
+  personajesBusqueda : IPersonaje[];
   char : string;
-  constructor(
-    private service : PersonajeServiceService,
-    private location: Location) { }
+  gender : any;
+  error_http : any;
+  activarComponente : boolean;
+  items: any;
 
-  buscar(char: string){
-    this.service.searchCharacters(char)
-      .subscribe((resp: any)=>{
-        this.personajes = resp;
-        console.log(this.personajes);
+  @Input() genderSelected : string ;
+  @ViewChild('notFound') private notFound: ElementRef;
+
+  constructor(private service : PersonajeServiceService){ }
+
+  ngOnInit(): void {
+    this.botenesSelect();
+  }
+
+  group = new FormGroup({
+    name: new FormControl(),
+    gender: new FormControl(),
+  });
+
+  public botenesSelect(): void{
+    this.service.getAllCharacters()
+      .subscribe((resp)=>{
+        this.items = resp;
+        this.gender = [...new Set(this.items.map(item => item.gender))];
       });
   }
 
-  regresar() {
-    this.location.back();
+  buscar(char: string){
+    char = char.toLowerCase();
+   
+    
+    if(char.length < 0 || char == "" ){
+      console.log("entra");
+      return [];
+    }
+
+    if(char=="female" || char=="male" || char == "unknown" ){
+      this.service.searchCharacterByGender(char).subscribe((resp: any) =>{
+        this.personajesBusqueda = resp;
+      });
+    }
+    else{
+      this.service.searchCharacters(char)
+       .subscribe((resp: any)=>{
+         this.personajesBusqueda = resp;
+       }
+       , (err)=>{
+        this.error_http = true;
+         this.error_http = setTimeout(()=>{
+            this.notFound.nativeElement.remove();
+          },5000);
+       });
+    }
   }
+
 }

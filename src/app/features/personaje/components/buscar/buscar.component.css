@@ -1,5 +1,56 @@
 .cuadroBusqueda {
-    margin-top: 2rem;
     padding: 20px;
-    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
+.volver,
+.filtros,
+.cuadroBusqueda,
+.alert {
+    width: 90%;
+    margin: 2.5em auto;
+}
+
+.cuadroBusqueda input:focus {
+    outline: none;
+    border: none;
+}
+
+.example-card {
+    margin: 3px 10px;
+    border: 1px solid black;
+    border: 1px solid;
+    padding: 1px;
+    box-shadow: 2px 1px #c7c7c7;
+}
+
+.example-card mat-card-content p {
+    height: 40px;
+    padding: 5%;
+}
+
+input {
+    border-color: transparent;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 8fr));
+    grid-gap: 2rem;
+    text-align: center;
+    margin: 0 3rem;
+}
+
+.grid img {
+    width: 70%;
+}
+
+.cuerpo {
+    align-items: center;
+    margin: 2rem 4rem;
+}
+
+.example-radio-button {
+    display: inline;
 }

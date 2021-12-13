@@ -4,23 +4,37 @@ import { CommonModule } from '@angular/common';
 /*module components */
 import { PersonajeRoutingModule } from './personaje-routing.module';
 
+/*components */
 import { PersonajeListComponent } from './components/list/personaje-list.component';
 import { PersonajeDetalleComponent } from './components/detalle/personaje-detalle.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
-import { CardsBusquedaComponent } from 'src/app/share/components/cards-busqueda/cards-busqueda.component';
+import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-personaje.component';
+import { SlideshowPersonajesComponent } from './components/slideshow-personajes/slideshow-personajes.component'
 
-//import { ShareModule } from '../../share/components/share.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     PersonajeListComponent,
     PersonajeDetalleComponent,
     BuscarComponent,
-    // CardsBusquedaComponent
+    PintarPersonajeComponent,
+    SlideshowPersonajesComponent
   ],
   imports: [ 
     CommonModule,
     PersonajeRoutingModule,
+    FormsModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatRadioModule,
+    MatPaginatorModule, 
+    ReactiveFormsModule
   ]
 })
 export class PersonajeModule { }
