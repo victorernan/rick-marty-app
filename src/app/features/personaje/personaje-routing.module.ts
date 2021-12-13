@@ -18,7 +18,7 @@ const routes: Routes = [
     component: PersonajeDetalleComponent,
   },
   {
-    path : '*', redirectTo: '/personajes', pathMatch: 'full'
+    path : '', redirectTo: '/personajes', pathMatch: 'full'
   }
 ];
 
