@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 
 @Component({
@@ -18,6 +18,8 @@ export class PersonajeListComponent implements OnInit {
   constructor(private service : PersonajeServiceService) {
     this.currentPage = 1;
   }
+
+  @Input() person: IPersonaje[];
   
   ngOnInit(): void {
     this.mostrarPersonajes();

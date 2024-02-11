@@ -1,5 +1,4 @@
 import { Component, Input, OnInit} from '@angular/core';
-
 @Component({
   selector: 'app-pintar',
   templateUrl: './pintar-personaje.component.html',
@@ -15,8 +14,4 @@ export class PintarPersonajeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  
- 
-
 }

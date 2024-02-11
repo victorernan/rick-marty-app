@@ -9,7 +9,6 @@ import { PersonajeListComponent } from './components/list/personaje-list.compone
 import { PersonajeDetalleComponent } from './components/detalle/personaje-detalle.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PintarPersonajeComponent } from './components/pintar-personaje/pintar-personaje.component';
-import { SlideshowPersonajesComponent } from './components/slideshow-personajes/slideshow-personajes.component'
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
@@ -24,7 +23,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     PersonajeDetalleComponent,
     BuscarComponent,
     PintarPersonajeComponent,
-    SlideshowPersonajesComponent
   ],
   imports: [ 
     CommonModule,

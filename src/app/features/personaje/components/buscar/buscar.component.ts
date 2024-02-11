@@ -2,7 +2,6 @@ import { Component, Input,  ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 import { PersonajeListComponent } from './../list/personaje-list.component'
-
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PersonajeServiceService } from '../../services/personajes/personaje-service.service';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from '@angular/common';
-
 @Component({
   selector: 'app-personaje-detalle',
   templateUrl: './personaje-detalle.component.html',
@@ -24,7 +23,6 @@ export class PersonajeDetalleComponent implements OnInit {
   ngOnInit(): void {
     this.getSingleChar();
     this.getEpisode();
-  
   }
 
   getSingleChar():void{

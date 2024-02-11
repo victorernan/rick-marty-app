@@ -16,7 +16,6 @@
             <input #char type="text" formControlName="name" (keyup)="buscar(char.value)" class="form-control" placeholder="Buscar personaje">
         </div>
     </form>
-
     <app-pintar [personajes]="personajesBusqueda" [activarComponente]="activarComponente"></app-pintar>
 
     <div class="alert alert-danger" *ngIf="error_http" #notFound>

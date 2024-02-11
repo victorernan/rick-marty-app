@@ -3,13 +3,12 @@
         <mat-card-header>
             <h2>{{character.name}}</h2>
         </mat-card-header>
-        <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
+        
         <mat-card-content>
+            <img mat-card-image [src]="character.image " [routerLink]="[ '/detalle-personaje', character.id ] ">
             <p *ngIf="character.status == 'Alive'"><span class="badge badge-danger">Muerto</span> Especie: {{character.species}} </p>
             <p *ngIf="character.status =='Dead'"><span class="badge badge-success">Vivo</span> Especie: {{character.species}} </p>
             <p *ngIf="character.status == 'unknown'"><span class="badge badge-secondary">Desconocido</span> Especie: {{character.species}} </p>
         </mat-card-content>
     </mat-card>
 </div>
-
-<app-slideshow-personajes></app-slideshow-personajes>
